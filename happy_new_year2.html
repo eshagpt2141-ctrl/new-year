@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy New Year 💖</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at top, #ff9a9e, #fad0c4, #fad0c4);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: #ff4d6d;
+      transform: rotate(45deg);
+      animation: float 8s linear infinite;
+      opacity: 0.6;
+    }
+    .heart::before, .heart::after {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: #ff4d6d;
+      border-radius: 50%;
+    }
+    .heart::before { top: -7px; left: 0; }
+    .heart::after { left: -7px; top: 0; }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(45deg); }
+      100% { transform: translateY(-10vh) rotate(45deg); }
+    }
+
+    .container {
+      text-align: center;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #fff;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      margin-bottom: 20px;
+      font-size: 32px;
+    }
+
+    /* Envelope */
+    .envelope {
+      position: relative;
+      width: 320px;
+      height: 210px;
+      margin: auto;
+      cursor: pointer;
+      perspective: 1000px;
+    }
+
+    .env-body {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #ff9a9e, #fecfef);
+      clip-path: polygon(0 0, 100% 0, 50% 55%);
+      transform-origin: top;
+      transition: transform 1.2s ease;
+      z-index: 3;
+    }
+
+    .letter {
+      position: absolute;
+      bottom: -100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      height: 200px;
+      background: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      transition: bottom 1.2s ease;
+      z-index: 2;
+      overflow-y: auto;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .letter h2 {
+      margin-top: 0;
+      color: #ff4d6d;
+    }
+
+    .letter p {
+      font-size: 14px;
+      color: #444;
+    }
+
+    .letter img {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 8px;
+    }
+
+    .envelope.open .flap {
+      transform: rotateX(180deg);
+    }
+
+    .envelope.open .letter {
+      bottom: 10px;
+    }
+
+    .hint {
+      margin-top: 15px;
+      color: #fff;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- hearts -->
+  <div class="heart" style="left:10%; animation-delay:0s"></div>
+  <div class="heart" style="left:30%; animation-delay:2s"></div>
+  <div class="heart" style="left:50%; animation-delay:4s"></div>
+  <div class="heart" style="left:70%; animation-delay:1s"></div>
+  <div class="heart" style="left:90%; animation-delay:3s"></div>
+
+  <div class="container">
+    <h1>✨ Happy New Year ✨</h1>
+
+    <div class="envelope" onclick="toggleEnvelope()">
+      <div class="env-body"></div>
+      <div class="flap"></div>
+      <div class="letter">
+        <h2>Dear Blessy 💖</h2>
+        <p>
+          May this New Year bring you endless smiles, warm memories,
+          and beautiful moments we will always cherish....with love from your wife...Esha ✨
+        </p>
+        <!-- replace with your own photos -->
+        <img src="pic1.jpg" alt="memory 1">
+        <img src="pic2.jpg" alt="memory 2">
+      </div>
+    </div>
+
+    <div class="hint">Click the envelope 💌</div>
+  </div>
+
+  <script>
+    function toggleEnvelope() {
+      document.querySelector('.envelope').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
